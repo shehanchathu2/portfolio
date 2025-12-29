@@ -24,7 +24,7 @@ function App() {
         
         {/* Simple Footer */}
         <footer className="py-6 text-center text-slate-500 text-sm border-t border-slate-800">
-          <p>© {new Date().getFullYear()} Alex User. Built with React & Tailwind.</p>
+          <p>© {new Date().getFullYear()} Shehan Chathuranga.🤫</p>
         </footer>
       </div>
     </Router>
