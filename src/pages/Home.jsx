@@ -227,9 +227,9 @@ const Home = () => {
               </Link>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-">
+            <div className="grid md:grid-cols-3 gap-6 md:gap-0">
               {projects.map((project, i) => (
-                <div key={i} className="group relative transition-all duration-500 hover:-translate-y-3">
+                <div key={i} className="group relative transition-all duration-500 md:hover:-translate-y-3">
 
                   <div className="p-8 pt-0 -mt-10 relative z-10">
                     <div className="bg-slate-900 border border-slate-800 p-6 rounded-2xl shadow-2xl group-hover:border-primary/30 transition-all duration-500">
