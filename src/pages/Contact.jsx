@@ -53,7 +53,7 @@ const Contact = () => {
                 <h2 className="text-2xl font-bold text-white">Let's Talk</h2>
               </div>
               <p className="text-slate-300 leading-relaxed mb-6">
-                I'm currently looking for <span className="text-white font-semibold">internship opportunities</span> for Summer 2025. 
+                I'm currently looking for <span className="text-white font-semibold">internship opportunities</span>. 
                 Whether you have a question or just want to say hi, I'll try my best to get back to you!
               </p>
               <div className="flex items-center gap-2">
@@ -120,7 +120,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   className="w-full bg-slate-900/50 border border-slate-700/50 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-400/50 focus:ring-2 focus:ring-blue-400/20 transition-all backdrop-blur-sm" 
-                  placeholder="John Doe" 
+                  placeholder="Your Name" 
                 />
               </div>
 
@@ -135,7 +135,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full bg-slate-900/50 border border-slate-700/50 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-400/50 focus:ring-2 focus:ring-blue-400/20 transition-all backdrop-blur-sm" 
-                  placeholder="john@example.com" 
+                  placeholder="example@email.com" 
                 />
               </div>
 

@@ -123,15 +123,18 @@ const Home = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-wrap gap-4 pt-2">
-                <Link
-                  to="/projects"
+                <a
+                  href="/shehan.pdf"
+                  download
                   className="group relative px-8 py-4 rounded-lg bg-primary/10 border border-primary/50 text-white font-semibold hover:bg-primary/20 transition-all duration-300 overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center gap-2">
                     Download Resume
                   </span>
+
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/20 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-                </Link>
+                </a>
+
 
                 <Link
                   to="/contact"
@@ -146,13 +149,13 @@ const Home = () => {
                 <span className="text-xs text-slate-500 uppercase tracking-wider">Connect</span>
                 <div className="flex gap-4">
                   <a
-                    href="#"
+                    href="https://github.com/shehanchathu2"
                     className="w-11 h-11 rounded-lg bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary/50 hover:bg-slate-800 transition-all duration-300"
                   >
                     <Github size={20} />
                   </a>
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/in/shehan-chathuranga/"
                     className="w-11 h-11 rounded-lg bg-slate-800/50 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-primary hover:border-primary/50 hover:bg-slate-800 transition-all duration-300"
                   >
                     <Linkedin size={20} />
