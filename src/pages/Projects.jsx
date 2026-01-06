@@ -4,6 +4,7 @@ import wavemirissa from '../assets/p1.png'
 import movio from '../assets/p2.png'
 import lomoora from '../assets/p3.png'
 import bokify from '../assets/p4.png'
+import research from '../assets/research.jpeg'
 
 const Projects = () => {
   const projects = [
@@ -13,7 +14,7 @@ const Projects = () => {
       tags:["Machine Learning", "LSTM", "Vision Transformer", "Python"],
       github: "#",
       live: "#",
-      image: "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=800&h=500&fit=crop"
+      image: research
     },
     {
       title: "Handmade Jewellery Try-On & Customization Platform (Wave Mirissa)",
