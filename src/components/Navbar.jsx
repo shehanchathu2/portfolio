@@ -25,7 +25,7 @@ const Navbar = () => {
             <div className="h-9 w-9 bg-surface border border-slate-700 rounded-lg flex items-center justify-center transition-colors group-hover:border-primary">
               <span className="text-primary font-black text-xl leading-none">S</span>
             </div>
-            <span className="text-xl font-bold text-white tracking-tight">Shehan Chathuranga</span>
+            <span className="text-xl font-bold text-white tracking-tight">ShehanC.</span>
           </Link>
 
           {/* Desktop Menu */}
