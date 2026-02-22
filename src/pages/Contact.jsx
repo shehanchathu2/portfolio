@@ -94,7 +94,7 @@ const Contact = () => {
                 />
                 <SocialButton 
                   icon={<Linkedin size={20} />}
-                  href="https://linkedin.com/in/yourprofile"
+                  href="https://www.linkedin.com/in/shehan-chathuranga/"
                   label="LinkedIn"
                 />
               </div>

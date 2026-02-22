@@ -1,6 +1,7 @@
 import React from "react";
 import shehan1 from '../assets/shehan11.jpeg'
 
+
 const About = () => {
   return (
     <section className="min-h-screen pt-28 pb-16 px-4 relative overflow-hidden">
