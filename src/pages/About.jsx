@@ -1,5 +1,5 @@
 import React from "react";
-import shehan1 from '../assets/shehan1.jpeg'
+import shehan from '../assets/shehan1.jpeg'
 
 const About = () => {
   return (
@@ -29,7 +29,7 @@ const About = () => {
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full blur-md group-hover:blur-lg transition-all"></div>
                   <img
-                    src={shehan1}
+                    src={shehan}
                     alt="Shehan Chathuranga"
                     className="relative w-48 h-48 rounded-full object-cover border-4 border-white/20 shadow-xl"
                   />
