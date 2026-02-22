@@ -1,5 +1,5 @@
 import React from "react";
-import shehan1 from '../assets/shehan1.jpeg'
+import shehan1 from '../assets/shehan11.jpeg'
 
 const About = () => {
   return (
