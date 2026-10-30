@@ -21,7 +21,7 @@ const Skills = () => {
   ];
 
   return (
-    <section className="min-h-screen pt-28 pb-16 px-4 relative overflow-hidden">
+<section id="skills" className="pt-28 pb-16 px-4 relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>

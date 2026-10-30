@@ -4,7 +4,7 @@ import shehan1 from '../assets/shehan11.jpeg'
 
 const About = () => {
   return (
-    <section className="min-h-screen pt-28 pb-16 px-4 relative overflow-hidden">
+<section id="about" className="pt-28 pb-16 px-4 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>

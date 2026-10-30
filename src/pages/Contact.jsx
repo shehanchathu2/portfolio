@@ -2,28 +2,51 @@ import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Linkedin, Github } from 'lucide-react';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+
+
+  // Create a free form at https://formspree.io and paste your endpoint here
+const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORM_ID';
+
+const emptyForm = { name: '', email: '', subject: '', message: '' };
+
+const [formData, setFormData] = useState(emptyForm);
+const [status, setStatus] = useState('idle'); // idle | sending | success | error
+
+const handleChange = (e) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value
   });
+};
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  if (!formData.name || !formData.email || !formData.message) {
+    setStatus('error');
+    return;
+  }
+
+  setStatus('sending');
+  try {
+    const res = await fetch(FORMSPREE_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(formData),
     });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Add your form submission logic here
-  };
+    if (res.ok) {
+      setStatus('success');
+      setFormData(emptyForm);
+    } else {
+      setStatus('error');
+    }
+  } catch {
+    setStatus('error');
+  }
+};
 
   return (
-    <section className="min-h-screen pt-28 pb-16 px-4 relative overflow-hidden">
+<section id="contact" className="pt-28 pb-16 px-4 relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
@@ -53,7 +76,7 @@ const Contact = () => {
                 <h2 className="text-2xl font-bold text-white">Let's Talk</h2>
               </div>
               <p className="text-slate-300 leading-relaxed mb-6">
-                I'm currently looking for <span className="text-white font-semibold">internship opportunities</span>. 
+              I'm currently looking for <span className="text-white font-semibold">junior software engineer opportunities</span>.
                 Whether you have a question or just want to say hi, I'll try my best to get back to you!
               </p>
               <div className="flex items-center gap-2">
@@ -150,7 +173,7 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   className="w-full bg-slate-900/50 border border-slate-700/50 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-blue-400/50 focus:ring-2 focus:ring-blue-400/20 transition-all backdrop-blur-sm" 
-                  placeholder="Internship Opportunity" 
+                 placeholder="Junior Software Engineer Opportunity"
                 />
               </div>
 
@@ -170,12 +193,22 @@ const Contact = () => {
               </div>
 
               <button 
-                onClick={handleSubmit}
-                className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold py-4 rounded-xl hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:scale-[1.02] active:scale-[0.98]"
-              >
-                <span>Send Message</span>
-                <Send size={18} />
-              </button>
+  onClick={handleSubmit}
+  disabled={status === 'sending'}
+  className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold py-4 rounded-xl hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+>
+  <span>{status === 'sending' ? 'Sending...' : 'Send Message'}</span>
+  <Send size={18} />
+</button>
+
+{status === 'success' && (
+  <p className="text-green-400 text-sm text-center">Thanks! Your message has been sent.</p>
+)}
+{status === 'error' && (
+  <p className="text-red-400 text-sm text-center">
+    Something went wrong. Please fill in your name, email and message, or try again.
+  </p>
+)}
             </div>
           </div>
         </div>

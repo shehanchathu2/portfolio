@@ -18,3 +18,7 @@
 ::-webkit-scrollbar-thumb {
   @apply bg-surface rounded-full hover:bg-slate-700;
 }
+
+html {
+  scroll-behavior: smooth;
+}

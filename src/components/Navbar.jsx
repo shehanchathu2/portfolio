@@ -1,47 +1,74 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Code2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
+
+const navLinks = [
+  { name: 'Home', id: 'home' },
+  { name: 'About', id: 'about' },
+  { name: 'Skills', id: 'skills' },
+  { name: 'Experience', id: 'experience' },
+  { name: 'Projects', id: 'projects' },
+  { name: 'Contact', id: 'contact' },
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
+  const [active, setActive] = useState('home');
 
-  const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Skills', path: '/skills' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Contact', path: '/contact' },
-  ];
+  // Highlight the link of the section currently in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        });
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    );
 
-  const isActive = (path) => location.pathname === path;
+    navLinks.forEach((link) => {
+      const el = document.getElementById(link.id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleNavClick = (e, id) => {
+    e.preventDefault();
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setActive(id);
+    setIsOpen(false);
+  };
+
+  const isActive = (id) => active === id;
 
   return (
     <nav className="fixed w-full z-50 bg-background/80 backdrop-blur-md border-b border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <a href="#home" onClick={(e) => handleNavClick(e, 'home')} className="flex items-center space-x-2">
             <div className="h-9 w-9 bg-surface border border-slate-700 rounded-lg flex items-center justify-center transition-colors group-hover:border-primary">
               <span className="text-primary font-black text-xl leading-none">S</span>
             </div>
             <span className="text-xl font-bold text-white tracking-tight">ShehanC.</span>
-          </Link>
+          </a>
 
           {/* Desktop Menu */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-4">
               {navLinks.map((link) => (
-                <Link
+                <a
                   key={link.name}
-                  to={link.path}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${isActive(link.path)
+                  href={`#${link.id}`}
+                  onClick={(e) => handleNavClick(e, link.id)}
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-300 ${isActive(link.id)
                     ? 'text-primary bg-slate-800/50'
                     : 'text-slate-300 hover:text-primary hover:bg-slate-800/30'
                     }`}
                 >
                   {link.name}
-                </Link>
+                </a>
               ))}
             </div>
           </div>
@@ -63,17 +90,17 @@ const Navbar = () => {
         <div className="md:hidden bg-surface border-b border-slate-700">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.name}
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className={`block px-3 py-2 rounded-md text-base font-medium ${isActive(link.path)
+                href={`#${link.id}`}
+                onClick={(e) => handleNavClick(e, link.id)}
+                className={`block px-3 py-2 rounded-md text-base font-medium ${isActive(link.id)
                   ? 'text-primary bg-slate-800'
                   : 'text-slate-300 hover:text-white hover:bg-slate-700'
                   }`}
               >
                 {link.name}
-              </Link>
+              </a>
             ))}
           </div>
         </div>
